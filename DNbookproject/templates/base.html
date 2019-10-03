@@ -2,9 +2,15 @@
 {% bootstrap_css %}
 {% bootstrap_javascript jquery="full" %}
 
-
-<a href="{% url 'home' %}">Home</a>
-<a href="{% url 'realmap' %}">Map</a> <br/>
+<nav aria-label="breadcrumb">
+     <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'realmap' %}">Map</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'bookstore' %}">Bookstore</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'board' %}">Board</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'guide' %}">Guide</a></li>
+     </ol>
+</nav>
 
 {% if user.is_authenticated %}
 <a role="button">환영합니다. {{ user.username }} 님!</a>
@@ -23,6 +29,4 @@
 <!--다른 템플릿에 글을 쓰면 이 사이로 들어옵니다~!-->
 {% endblock %}
 
-<footer style="color: blueviolet">2019-2 시종설 동네북 프로젝트</footer>
-
-<!--base파일은 다른 템플릿에 다 같이 보이면 헷갈리니까 보라색으로 바꿔놨어요 ㅋㅋㅋ-->
+<footer style="color: #8798f8">2019-2 시종설 동네북 프로젝트</footer>

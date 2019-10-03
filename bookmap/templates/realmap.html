@@ -41,12 +41,14 @@ function addrStoN(address,title,i){ //주소를 위도경도로 변환후 마킹
                 clickable: true,
                 title: title
             });
+            let url = "{% url 'detail' bs.get(name="+str(title)+").bookstore_id %}";
             //'<a href="http://www.kakaocorp.com/main" target="_blank" class="link">자세히 보기</a>'
             let content = '<div class="content">' + 
                     title + '<br>' + 
                     address + '<br>'+
-                    "<a href="+"{% url 'storedetail' bs.get(name=" + title + ").bookstore_id %}" + ">자세히 보기</a>" +
+                    "<a href="+url+">자세히</a>" +
                     '</div>';
+                    
             let ifw = new kakao.maps.InfoWindow({
                 content: content,
                 removable: true
@@ -58,7 +60,7 @@ function addrStoN(address,title,i){ //주소를 위도경도로 변환후 마킹
     });
 }
 for(let i=0; i< addrArr.length;i++){
-    addrStoN(addrArr[i],nameArr[i],str(i));
+    addrStoN(addrArr[i],nameArr[i], i);
 };
 
 </script>
