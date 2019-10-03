@@ -1,0 +1,28 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery="full" %}
+
+
+<a href="{% url 'home' %}">Home</a>
+<a href="{% url 'realmap' %}">Map</a> <br/>
+
+{% if user.is_authenticated %}
+<a role="button">환영합니다. {{ user.username }} 님!</a>
+<a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
+<form id="logout" method="POST" action="{% url 'logout' %}">
+<a href="{% url 'mypage' %}">Mypage</a>
+{% csrf_token %} <input type="hidden" />
+</form>
+{% else %}
+     <a href="{% url 'signup' %}">회원가입</a>
+     <a href="{% url 'login' %}">로그인</a>
+{% endif %}
+
+
+{% block content %}
+<!--다른 템플릿에 글을 쓰면 이 사이로 들어옵니다~!-->
+{% endblock %}
+
+<footer style="color: blueviolet">2019-2 시종설 동네북 프로젝트</footer>
+
+<!--base파일은 다른 템플릿에 다 같이 보이면 헷갈리니까 보라색으로 바꿔놨어요 ㅋㅋㅋ-->
