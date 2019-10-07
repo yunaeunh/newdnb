@@ -43,7 +43,7 @@ def boss(request):
        # User has info and wants an account now! 즉 [signup!]버튼을 눌렀을 때 일어나는 일
        if request.POST['password1'] == request.POST['password2']:
            try:
-               user = User.objects.get(Username=request.POST['username'])
+               user = User.objects.get(username=request.POST['username'])
                return render(request, 'boss.html', {'error': 'Username has already been taken'})
            except User.DoesNotExist:
                 user = User.objects.create_user(
@@ -55,6 +55,11 @@ def boss(request):
                 introduce=request.POST['introduce']
                 bossprofile = Bossprofile(user=user, nickname=nickname, email=email, introduce=introduce)
                 bossprofile.save()
+                #선택한 책방 이름에 맞는 책방모델에 >>>책방모델.add(bossprofile), >>>책방모델.save()
+                storename = request.POST['storename']
+                bookstore = BookStore.objects.get(name=storename)
+                bookstore.boss=User.objects.get(username=user)
+                bookstore.save()
                 auth.login(request, user)
                 return redirect('home')
        else:
