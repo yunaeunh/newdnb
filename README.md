@@ -12,5 +12,8 @@
 - pillow
 - requests
 
+## 모델 불러오기
+- $python manage.py migrate
+
 ## 책방 DB 불러오기
-- test.py 있는 위치에서 $python test.py 입력!
+- load_data.py 있는 위치에서 $python load_data.py 입력!
