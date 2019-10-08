@@ -22,4 +22,4 @@ def realmap(request):
         name.append(a.name)
     addrlist = simplejson.dumps(addr)
     namelist = simplejson.dumps(name)
-    return render(request, 'realmap.html', {'bs' : bookstores, 'bsaddr' : addrlist, 'bsname' : namelist})
+    return render(request, 'realmap.html', {'bs':bookstores, 'bsaddr' : addrlist, 'bsname' : namelist})

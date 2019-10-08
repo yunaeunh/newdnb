@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import RegexValidator
-#from csvImporter.model import CsvDbModel
+from django.contrib.auth.models import User
+from main.models import *
+
 # Create your models here.
 
 class BookStore(models.Model):
@@ -13,6 +15,7 @@ class BookStore(models.Model):
     img = models.ImageField(upload_to='store/', null=True)
     like_count = models.PositiveIntegerField(default=0)
     email = models.EmailField(null=True)
+    boss = models.ForeignKey(User, null=True, on_delete=models.CASCADE) #보스 프로필 데려와야하지않으까..?
 
     def __str__(self):
         return self.name
